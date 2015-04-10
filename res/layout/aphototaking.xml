@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" android:background="#C6E2FF">
+
+    <FrameLayout
+        android:id="@+id/MainActivity_frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.07" >
+
+        <SurfaceView
+            android:id="@+id/MainActivity_surfaceView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/MainActivity_tv_attitudeinfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Medium Text"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:gravity="bottom"
+        android:weightSum="1" >
+
+        <ImageButton
+            android:id="@+id/MainActivity_ibt_scan"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.4"
+            android:src="@drawable/ic_photodefault" android:layout_gravity="center"/>
+
+        <Button
+            android:id="@+id/MainActivity_btn_take"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2"
+            android:text="Button" android:layout_gravity="center"/>
+
+        <ImageButton
+            android:id="@+id/MainActivity_ibt_more"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.4"
+            android:src="@drawable/ic_photeinfo" android:layout_gravity="center"/>
+    </LinearLayout>
+
+</LinearLayout>

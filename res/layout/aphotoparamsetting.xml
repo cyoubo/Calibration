@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="#5CACEE"
+
+>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="存储路径"
+        android:textAppearance="?android:attr/textAppearanceMedium" android:paddingTop="4px" android:paddingBottom="4px"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:text="手机内存/phm/photo"
+        android:textAppearance="?android:attr/textAppearanceMedium" android:paddingTop="4px" android:paddingBottom="4px"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="照片尺寸"
+        android:textAppearance="?android:attr/textAppearanceMedium" android:paddingTop="4px" android:paddingBottom="4px"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:weightSum="1">
+
+        <TextView
+            android:id="@+id/aphotoparamsetting_tv_size"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Medium Text"
+            android:textAppearance="?android:attr/textAppearanceMedium" android:clickable="false" android:layout_weight="0.2" android:gravity="center"/>
+
+        <Button
+            android:id="@+id/aphotoparamsetting_btn_choosesize"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="选择" android:layout_weight="0.8"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:weightSum="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="闪光灯状态"
+                android:textAppearance="?android:attr/textAppearanceMedium" android:layout_weight="0.4" android:gravity="center"/>
+
+            <CheckBox
+                android:id="@+id/aphotoparamsetting_cb_flashmode"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="开启" android:layout_weight="0.6" android:gravity="center"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/aphotoparamsetting_btn_sure"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="                                               确定                                                " />
+
+</LinearLayout>

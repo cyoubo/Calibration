@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#50B0E2FF"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/activity_main_tv_takingphoto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#76EE00"
+        android:padding="15px"
+        android:text="拍摄影像"
+        android:gravity="center"
+        android:textColor="#FFFFFF"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+     <TextView
+        android:id="@+id/activity_main_tv_calibration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#CD853F"
+        android:padding="15px"
+        android:text="标定解算"
+        android:gravity="center"
+        android:textColor="#FFFFFF"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+      <TextView
+        android:id="@+id/activity_main_tv_scan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#1E90FF"
+        android:padding="15px"
+        android:text="结果查看"
+        android:gravity="center"
+        android:textColor="#FFFFFF"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+     
+
+</LinearLayout>
