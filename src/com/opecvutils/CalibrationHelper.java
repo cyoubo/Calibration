@@ -12,7 +12,6 @@ import org.opencv.core.TermCriteria;
 import org.opencv.imgproc.Imgproc;
 
 import android.graphics.Bitmap;
-import android.util.Log;
 
 /**
  * 标定操作的帮助类
@@ -52,7 +51,6 @@ public class CalibrationHelper
 	 * 标定处理<br>
 	 * @param objectPoints 用于标定物方坐标
 	 * @param imageSize 用于标定的影像的统一尺寸
-	 * 
 	 * **/
 	public double Calibration(List<Mat> objectPoints, Size imageSize)
 	{
@@ -86,30 +84,15 @@ public class CalibrationHelper
 		List<Mat> result = new ArrayList<>();
 		for (int index = 0; index < this.mImagePaths.length; index++)
 		{
-			Mat temp =new Mat(mHarrisSize, CvType.CV_32FC1);
-			for (int i = 0; i < mHarrisSize.width; i++)
-				for (int j = 0; j < mHarrisSize.height; j++)
-					temp.put(i, j, new double[]{i,j,0});
+			Mat temp =new Mat(new Size(1, mHarrisSize.height*mHarrisSize.width), CvType.CV_32FC3);
+			for (int i = 0; i < temp.rows(); i++)
+				for (int j = 0; j < temp.cols(); j++)
+					temp.put(i, j, new double[]{i%mHarrisSize.width,i/mHarrisSize.width,0});
 			
 			result.add(temp);
 		}
 		return result;
 	}
-
-	public Integer[] FeatureDetect()
-	{
-		List<Integer> result = new ArrayList<>();
-		for (int i = 0; i < mImagePaths.length; i++)
-		{
-			BitmapHelper_CV helper_CV = new BitmapHelper_CV(mImagePaths[i]);
-			boolean r = Calib3d.findChessboardCorners(helper_CV.getImageMat(),
-					mHarrisSize, mCorners[i], Calib3d.CALIB_CB_ADAPTIVE_THRESH);
-			if (r)
-				result.add(i);
-			helper_CV.ReleaseMat();
-		}
-		return (Integer[]) result.toArray();
-	}	
 	public boolean FeatureDetectbyThumbnail(String ThumbnailPath)
 	{
 		MatOfPoint2f tempconcers = new MatOfPoint2f();
@@ -118,19 +101,9 @@ public class CalibrationHelper
 				mHarrisSize, tempconcers, Calib3d.CALIB_CB_ADAPTIVE_THRESH);
 		helper_CV.ReleaseMat();
 		
-		Log.i("demo",ThumbnailPath+" "+result);
 		
 		return result;
 	}
-
-	public void FeatureLocated()
-	{
-		for (int i = 0; i < mImagePaths.length; i++)
-		{
-			FeatureLocated(i);
-		}
-	}
-
 	public boolean  FeatureLocated(int index)
 	{
 		BitmapHelper_CV helper_CV = new BitmapHelper_CV(mImagePaths[index]);
@@ -144,11 +117,7 @@ public class CalibrationHelper
 		return result;
 	}
 
-	public Mat getCameraMatrix()
-	{
-		return this.mCameraMatrix;
-	}
-
+	
 	public List<Mat> getCornerAsListMat()
 	{
 		List<Mat> result = new ArrayList<>();
@@ -158,6 +127,12 @@ public class CalibrationHelper
 		}
 		return result;
 	}
+	
+	public Mat getCameraMatrix()
+	{
+		return this.mCameraMatrix;
+	}
+
 
 	public Mat getDistCoeffs()
 	{

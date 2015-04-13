@@ -21,7 +21,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.calibration.dao.TakingParamDao;
+import com.component.TakingParam;
 import com.example.calibration.R;
 import com.system.IntentKey;
 import com.system.SystemUtils;
@@ -40,7 +40,7 @@ public class APhontoTaking extends Activity
 	private SurfaceHolder holder;
 	private Camera camera;
 	// 定义模型类
-	private TakingParamDao paramdao;
+	private TakingParam paramdao;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -68,7 +68,7 @@ public class APhontoTaking extends Activity
 		DirectoryUtils.CreateDirectory(SystemUtils.getPicturePath());
 		DirectoryUtils.CreateDirectory(SystemUtils.getPictureThumbnailPath());
 		// 数据类生成
-		paramdao = new TakingParamDao();
+		paramdao = new TakingParam();
 	}
 
 	// 相片拍摄的动作的回调器
@@ -197,7 +197,7 @@ public class APhontoTaking extends Activity
 		super.onActivityResult(requestCode, resultCode, data);
 		if (resultCode == 1 && requestCode == 1)
 		{
-			paramdao = (TakingParamDao) data
+			paramdao = (TakingParam) data
 					.getSerializableExtra(IntentKey.PhotoParam.toString());
 
 			Parameters parameters = camera.getParameters();

@@ -45,14 +45,14 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <ProgressBar
-            android:id="@+id/ProgressBar01"
+            android:id="@+id/aphotofeaturelocation_ProgressBar"
             style="?android:attr/progressBarStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:visibility="invisible" />
 
         <ImageView
-            android:id="@+id/ImageView01"
+            android:id="@+id/aphotofeaturelocation_ImageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/error"

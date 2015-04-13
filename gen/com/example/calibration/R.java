@@ -55,14 +55,12 @@ containing a value of this type.
         public static final int right=0x7f020004;
     }
     public static final class id {
-        public static final int ImageView01=0x7f04000c;
         public static final int MainActivity_btn_take=0x7f040020;
         public static final int MainActivity_frameLayout=0x7f04001c;
         public static final int MainActivity_ibt_more=0x7f040021;
         public static final int MainActivity_ibt_scan=0x7f04001f;
         public static final int MainActivity_surfaceView=0x7f04001d;
         public static final int MainActivity_tv_attitudeinfo=0x7f04001e;
-        public static final int ProgressBar01=0x7f04000b;
         public static final int action_settings=0x7f040029;
         public static final int activity_main_tv_calibration=0x7f040004;
         public static final int activity_main_tv_scan=0x7f040005;
@@ -71,6 +69,8 @@ containing a value of this type.
         public static final int aphotofeaturedetect_btn_check=0x7f040008;
         public static final int aphotofeaturedetect_btn_next=0x7f040009;
         public static final int aphotofeaturedetect_listview_keypoint=0x7f040007;
+        public static final int aphotofeaturelocation_ImageView=0x7f04000c;
+        public static final int aphotofeaturelocation_ProgressBar=0x7f04000b;
         public static final int aphotofeaturelocation_calibrate=0x7f04000d;
         public static final int aphotofeaturelocation_listView1=0x7f04000a;
         public static final int aphotofeaturelocation_next=0x7f04000e;

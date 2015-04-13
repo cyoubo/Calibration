@@ -17,8 +17,8 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
 
-import com.calibration.dao.TakingParamDao;
 import com.component.PhotoSizeAdapter;
+import com.component.TakingParam;
 import com.example.calibration.R;
 import com.system.IntentKey;
 import com.tool.mydialog.ListDialog;
@@ -32,7 +32,7 @@ public class APhotoParamSetting extends Activity
 	private Button button_sure, button_choose;
 	private TextView tv_size;
 
-	private TakingParamDao dao;
+	private TakingParam dao;
 	private PhotoSizeAdapter adapter;
 
 	@Override
@@ -42,7 +42,7 @@ public class APhotoParamSetting extends Activity
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.aphotoparamsetting);
 		Log.i("demo", " demo into setting");
-		dao = (TakingParamDao) getIntent().getExtras().getSerializable(
+		dao = (TakingParam) getIntent().getExtras().getSerializable(
 				IntentKey.PhotoParam.toString());
 		Log.i("demo", "demo get dao");
 		Log.i("demo", "demo dao is null " + (dao == null));

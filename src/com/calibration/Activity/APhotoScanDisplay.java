@@ -5,7 +5,6 @@ package com.calibration.Activity;
 
 import org.opencv.core.Size;
 
-import android.R.bool;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ImageView;

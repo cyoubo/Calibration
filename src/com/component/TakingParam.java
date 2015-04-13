@@ -1,14 +1,13 @@
 /**
  * 
  */
-package com.calibration.dao;
+package com.component;
 
 import java.io.Serializable;
 import java.util.List;
 
 
 
-import com.component.SerializableSize;
 
 import android.hardware.Camera.Size;
 
@@ -17,7 +16,7 @@ import android.hardware.Camera.Size;
  *         <p>
  *         拍照参数的模型类
  */
-public class TakingParamDao implements Serializable
+public class TakingParam implements Serializable
 {
 
 	/****/
@@ -30,7 +29,7 @@ public class TakingParamDao implements Serializable
 	/** 是否开启闪光的标示符 */
 	private boolean IsFlashed;
 
-	public TakingParamDao()
+	public TakingParam()
 	{
 		this.mysizes = new SerializableSize[5];
 		IsFlashed = false;

@@ -1,7 +1,6 @@
 package com.calibration.Activity;
 
-import java.util.List;
-
+import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.core.Size;
 
@@ -13,14 +12,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.component.FeatureDetectingAdapter;
 import com.example.calibration.R;
 import com.opecvutils.CalibrationHelper;
+import com.opecvutils.MatOutputer;
 import com.system.GlobleParam;
 import com.system.Initialization;
+import com.system.SystemUtils;
 import com.tool.mydialog.NormalDialog;
 /**
  * 该界面用于待解算影像的角点亚像素级坐标定位
@@ -29,6 +32,8 @@ public class APhotoFeatureLocation extends Activity implements Initialization
 {
 	private ListView listView;
 	private Button btn_check,btn_next;
+	private ProgressBar progressBar;
+	private ImageView imageView;
 	
 	private FeatureDetectingAdapter adapter;
 	
@@ -75,6 +80,10 @@ public class APhotoFeatureLocation extends Activity implements Initialization
 		btn_next=(Button)findViewById(R.id.aphotofeaturelocation_next);
 		btn_check.setOnClickListener(checkClickListener);
 		btn_next.setOnClickListener(nextClickListener);
+		progressBar=(ProgressBar)findViewById(R.id.aphotofeaturelocation_ProgressBar);
+		imageView=(ImageView)findViewById(R.id.aphotofeaturelocation_ImageView);
+		
+		
 
 		String[] paths=DirectoryUtils.SpiltFullPathToNames(GlobleParam.Create().getThumbnailImagePath());
 		adapter=new FeatureDetectingAdapter(this, paths);
@@ -147,9 +156,10 @@ public class APhotoFeatureLocation extends Activity implements Initialization
 				publishProgress(i,flag);//修改UI
 			}
 			//標定處理
-			//helper.Calibration(helper.CreateobjectPoints(), new Size(1024, 768));
-			
-			return 4.0;
+			publishProgress(-1,0);//修改UI,准备标定解算
+			double RMS=helper.Calibration(helper.CreateobjectPoints(), new Size(1024, 768));	
+			publishProgress(-1,1);//修改UI,完成标定解算
+			return RMS;
 		}
 		
 		/**
@@ -159,15 +169,12 @@ public class APhotoFeatureLocation extends Activity implements Initialization
 		@Override
 		protected void onPostExecute(Double result)
 		{
-			if(result<3)
-			{
-				NormalDialog dialog=new NormalDialog(context, "警告", "待解算影像过少，请重新选择影像");
-				dialog.Create().show();
-			}
-			else
-			{
-				btn_next.setEnabled(true);
-			}
+			if(result<1)
+				imageView.setImageResource(R.drawable.right);
+			
+			NormalDialog dialog=new NormalDialog(context, "结果", "重投影误差为"+result);
+			dialog.Create().show();
+			btn_next.setEnabled(true);
 		}
 		
 		/**
@@ -178,7 +185,20 @@ public class APhotoFeatureLocation extends Activity implements Initialization
 		protected void onProgressUpdate(Integer... values)
 		{
 			int index=values[0]; int flag=values[1];
-			adapter.UpdateState(index, flag);
+			if(index!=-1)
+				adapter.UpdateState(index, flag);
+			else
+			{
+				if(flag==0)
+				{
+					progressBar.setVisibility(View.VISIBLE);
+				}
+				else 
+				{
+					progressBar.setVisibility(View.INVISIBLE);
+					imageView.setVisibility(View.VISIBLE);
+				}
+			}
 		}
 	}
 
