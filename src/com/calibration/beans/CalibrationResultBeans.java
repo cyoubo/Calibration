@@ -1,8 +1,15 @@
 package com.calibration.beans;
 
+import java.io.Serializable;
 
-public class CalibrationResultBeans
+
+public class CalibrationResultBeans implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4527690292695444079L;
+
 	public Long getIndex()
 	{
 		return index;
@@ -73,15 +80,6 @@ public class CalibrationResultBeans
 		this.k2 = k2;
 	}
 
-	public double getK3()
-	{
-		return k3;
-	}
-
-	public void setK3(double k3)
-	{
-		this.k3 = k3;
-	}
 
 	public double getRms()
 	{
@@ -105,8 +103,42 @@ public class CalibrationResultBeans
 
 	private Long index;
 	private double fx,fy,cx,cy;
-	private double k1,k2,k3;
+	private double k1,k2;
+	private double p1,p2;
 	private double rms;
 	
+	public double getP1()
+	{
+		return p1;
+	}
+
+	public void setP1(double p1)
+	{
+		this.p1 = p1;
+	}
+
+	public double getP2()
+	{
+		return p2;
+	}
+
+	public void setP2(double p2)
+	{
+		this.p2 = p2;
+	}
+
+
 	private String resultdate;
+	
+	private String resolution;
+
+	public String getResolution()
+	{
+		return resolution;
+	}
+
+	public void setResolution(String resolution)
+	{
+		this.resolution = resolution;
+	}
 }

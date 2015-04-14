@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import FileUtils.Utils.DirectoryUtils;
-import android.R.bool;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;

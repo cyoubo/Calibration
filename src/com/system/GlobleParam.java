@@ -1,10 +1,11 @@
  package com.system;
 
 
+
 /**全局变量
  * <br><b>采用单件模式保证数据唯一</b>
  * */
-public class GlobleParam
+public class GlobleParam 
 {
 	/**全局参数的唯一实例*/
 	private static GlobleParam mParam;

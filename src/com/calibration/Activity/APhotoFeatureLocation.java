@@ -1,12 +1,11 @@
 package com.calibration.Activity;
 
-import org.opencv.core.CvType;
-import org.opencv.core.Mat;
 import org.opencv.core.Size;
 
 import FileUtils.Utils.DirectoryUtils;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -17,16 +16,18 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.calibration.beans.CalibrationResultBeans;
+import com.calibration.dao.CalibrationResultDao;
 import com.component.FeatureDetectingAdapter;
 import com.example.calibration.R;
 import com.opecvutils.CalibrationHelper;
-import com.opecvutils.MatOutputer;
 import com.system.GlobleParam;
 import com.system.Initialization;
+import com.system.IntentKey;
 import com.system.SystemUtils;
 import com.tool.mydialog.NormalDialog;
 /**
- * 该界面用于待解算影像的角点亚像素级坐标定位
+ * 该界面用于待解算影像的角点亚像素级坐标定位与标定
  * */
 public class APhotoFeatureLocation extends Activity implements Initialization
 {
@@ -37,6 +38,9 @@ public class APhotoFeatureLocation extends Activity implements Initialization
 	
 	private FeatureDetectingAdapter adapter;
 	
+	private CalibrationHelper helper;
+	private CalibrationResultDao dao;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -44,6 +48,7 @@ public class APhotoFeatureLocation extends Activity implements Initialization
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.aphotofeaturelocation);
 		Initialization();
+		dao=new CalibrationResultDao(new CalibrationResultBeans());
 	}
 	
 	//检测用事件响应
@@ -67,7 +72,13 @@ public class APhotoFeatureLocation extends Activity implements Initialization
 		@Override
 		public void onClick(View v)
 		{
+			dao.setCammerMatrix(helper.getCameraMatrix());
+			dao.setDistMatrix(helper.getDistCoeffs());
+			dao.setResultdate(SystemUtils.getSystemDateNosecondString());
 			
+			Intent intent=new Intent(APhotoFeatureLocation.this, ACalibrationResultDisplay.class);
+			intent.putExtra(IntentKey.CalibrationResult.toString(), dao.getBeansObj());
+			startActivity(intent);
 		}
 	};
 	
@@ -83,8 +94,6 @@ public class APhotoFeatureLocation extends Activity implements Initialization
 		progressBar=(ProgressBar)findViewById(R.id.aphotofeaturelocation_ProgressBar);
 		imageView=(ImageView)findViewById(R.id.aphotofeaturelocation_ImageView);
 		
-		
-
 		String[] paths=DirectoryUtils.SpiltFullPathToNames(GlobleParam.Create().getThumbnailImagePath());
 		adapter=new FeatureDetectingAdapter(this, paths);
 		listView.setAdapter(adapter);
@@ -145,7 +154,7 @@ public class APhotoFeatureLocation extends Activity implements Initialization
 		protected Double doInBackground(String... params)
 		{
 			//構建標定工具
-			CalibrationHelper helper=new CalibrationHelper(new Size(9, 6));
+			helper=new CalibrationHelper(new Size(9, 6));
 			helper.setImagePaths(GlobleParam.Create().getThumbnailImagePath());
 			//獲取影像的亞像素級角點座標
 			adapter.PreProgress();//开启处理
@@ -157,7 +166,8 @@ public class APhotoFeatureLocation extends Activity implements Initialization
 			}
 			//標定處理
 			publishProgress(-1,0);//修改UI,准备标定解算
-			double RMS=helper.Calibration(helper.CreateobjectPoints(), new Size(1024, 768));	
+			dao.setResolution(1024, 768);
+			double RMS=helper.Calibrate(helper.CreateobjectPoints(), new Size(1024, 768));	
 			publishProgress(-1,1);//修改UI,完成标定解算
 			return RMS;
 		}
@@ -175,6 +185,9 @@ public class APhotoFeatureLocation extends Activity implements Initialization
 			NormalDialog dialog=new NormalDialog(context, "结果", "重投影误差为"+result);
 			dialog.Create().show();
 			btn_next.setEnabled(true);
+			//保存RMS结果
+			dao.setRms(result);
+			
 		}
 		
 		/**

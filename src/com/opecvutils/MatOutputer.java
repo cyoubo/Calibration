@@ -61,7 +61,8 @@ public class MatOutputer
 	 * 输出到Txt文件<br>
 	 * 使用FileUtils包中函数将矩阵以Txt文件按照指定名字输出到指定路径中
 	 * @param path 指定的文件路径(包含/)
-	 * @param name 指定的文件名(不包含后缀)
+	 * @param name 指定的文件名(不包含后缀)<p>
+	 * 输出形式为：[i,j]{v1(,v2,v3)}
 	 * */
 	public boolean PrintToTxt(String path,String name)
 	{
@@ -80,7 +81,7 @@ public class MatOutputer
 	 * @param path 指定的文件路径(包含/)
 	 * @param name 指定的文件名(不包含后缀)
 	 * @param issplit 如果为真则输出形式为
-	 * 为以i,j,x,y,z,,x,y,z否则为[i:j],(x:y:z),(x:y:z)
+	 * 为以i,j,x,y,z, ,x,y,z否则为[i:j],(x:y:z),(x:y:z)
 	 * */
 	public boolean PrintToCvs(String path,String name,boolean issplit)
 	{

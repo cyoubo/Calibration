@@ -10,10 +10,7 @@ import org.opencv.core.TermCriteria;
 import org.opencv.features2d.FeatureDetector;
 import org.opencv.features2d.Features2d;
 import org.opencv.features2d.KeyPoint;
-import org.opencv.highgui.Highgui;
 import org.opencv.imgproc.Imgproc;
-
-import android.util.Log;
 
 public class FeatureHelper
 {

@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.example.calibration.R;
 import com.system.Initialization;
+import com.system.SystemUtils;
+import com.tool.SqliteHelper.SQLiteInitialization;
 
 public class MainActivity extends Activity implements Initialization
 {
@@ -19,9 +21,11 @@ public class MainActivity extends Activity implements Initialization
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);	
-		
-		
 		Initialization();
+		
+		SQLiteInitialization initialization=new SQLiteInitialization(new SystemUtils(), this);
+		if(!initialization.DatabaseIsExist())
+			initialization.TransportDataBase(new SystemUtils().getDataBaseName());
 	}
 	
 	@Override

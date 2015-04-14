@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E0EEE0"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="标定结果"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="结果编号    "
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/acalibrationresultdisplay_no"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+        </EditText>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dp"
+        android:paddingTop="2dp" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:padding="3dp"
+            android:text="主距X分量"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:padding="3dp"
+            android:text="主距Y分量"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dp"
+        android:paddingTop="2dp" >
+
+        <TextView
+            android:id="@+id/acalibrationresultdisplay_fx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:padding="3dp"
+            android:text="主距分量"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/acalibrationresultdisplay_fy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:padding="3dp"
+            android:text="主距分量"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dp"
+        android:paddingTop="2dp" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:padding="3dp"
+            android:text="偏心畸变X分量"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:padding="3dp"
+            android:text="偏心畸变Y分量"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dp"
+        android:paddingTop="2dp" >
+
+        <TextView
+            android:id="@+id/acalibrationresultdisplay_cx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:padding="3dp"
+            android:text="偏心畸变"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/acalibrationresultdisplay_cy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:padding="3dp"
+            android:text="偏心畸变"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="2dp"
+        android:paddingTop="2dp" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="3dp"
+            android:text="重投影中误差"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/acalibrationresultdisplay_rms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="3dp"
+            android:text="重投影中误差"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="2dp"
+        android:paddingTop="2dp" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="3dp"
+            android:text="径向畸变系数"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="1" >
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text="   k1   "
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <TextView
+                    android:id="@+id/acalibrationresultdisplay_k1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text="Medium Text"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text="   k2   "
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <TextView
+                    android:id="@+id/acalibrationresultdisplay_k2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text="Medium Text"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="2dp"
+        android:paddingTop="2dp" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="3dp"
+            android:text="切向畸变系数"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="1" >
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text="   p1   "
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <TextView
+                    android:id="@+id/acalibrationresultdisplay_p1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text="Medium Text"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text="   p2   "
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <TextView
+                    android:id="@+id/acalibrationresultdisplay_p2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text="Medium Text"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+            </TableRow>
+
+        </TableLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/acalibrationresultdisplay_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="保存" />
+
+</LinearLayout>

@@ -131,6 +131,10 @@ public class BitmapHelper_CV
 		return result;
 	}
 	
+	/**
+	 * 获取当前矩阵对象的为8位单通道样式的副本<p>
+	 * <b>该方法不修改当前矩阵对象本身</b>
+	 * */
 	public Mat getImageMatAsSingelChannel()
 	{
 		Mat dst=new Mat(mMat.size(), CvType.CV_8UC1);

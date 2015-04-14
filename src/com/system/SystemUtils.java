@@ -7,8 +7,10 @@ import java.util.Date;
 import FileUtils.Utils.DirectoryUtils;
 import android.content.Context;
 
+import com.tool.SqliteHelper.ISQLiteDataInterface.IDataBaseInfo;
+
 /** 该类用于实现常用的全局方法 */
-public class SystemUtils
+public class SystemUtils implements IDataBaseInfo
 {
 	/** 获取系统的时间 */
 	public static long CurrentSystemTime()
@@ -35,10 +37,17 @@ public class SystemUtils
 		return format.format(date);
 	}
 
-	/** 获取yyyy-MM-dd_HH:mm格式的系统时间 */
+	/** 获取yyyy-MM-dd_HH:mm:ss格式的系统时间 */
 	public static String getSystemDateString()
 	{
 		return SystemUtils.ConvertDate(SystemUtils.CurrentSystemTime());
+	}
+	
+	/** 获取yyyy-MM-dd_HH:mm格式的系统时间 */
+	public static String getSystemDateNosecondString()
+	{
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd_HH:mm");
+		return format.format(SystemUtils.CurrentSystemTime());
 	}
 
 	/** 获取用于存储图像的地址字符串*/
@@ -74,6 +83,27 @@ public class SystemUtils
 		String name=DirectoryUtils.SpiltFullPath(ThumbnailPath)[1];
 		String fatherpath=new File(path).getParent();
 		return fatherpath+"/"+name;
+	}
+
+	@Override
+	public String getDataBaseFullPath()
+	{
+		// TODO Auto-generated method stub
+		return ExtendSDpath()+"/PHM/db/phm.db";
+	}
+
+	@Override
+	public String getDataBasePath()
+	{
+		// TODO Auto-generated method stub
+		return ExtendSDpath()+"/PHM/db";
+	}
+
+	@Override
+	public String getDataBaseName()
+	{
+		// TODO Auto-generated method stub
+		return "phm.db";
 	}
 
 }
