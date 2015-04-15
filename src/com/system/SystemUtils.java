@@ -4,10 +4,11 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import com.tool.SqliteHelperOrm.IDataBaseInfo;
+
 import FileUtils.Utils.DirectoryUtils;
 import android.content.Context;
 
-import com.tool.SqliteHelper.ISQLiteDataInterface.IDataBaseInfo;
 
 /** 该类用于实现常用的全局方法 */
 public class SystemUtils implements IDataBaseInfo

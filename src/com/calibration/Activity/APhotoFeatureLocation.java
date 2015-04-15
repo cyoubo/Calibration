@@ -17,7 +17,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.calibration.beans.CalibrationResultBeans;
-import com.calibration.dao.CalibrationResultDao;
+import com.calibration.beanshelper.CalibrationResultBeansHelper;
 import com.component.FeatureDetectingAdapter;
 import com.example.calibration.R;
 import com.opecvutils.CalibrationHelper;
@@ -39,7 +39,7 @@ public class APhotoFeatureLocation extends Activity implements Initialization
 	private FeatureDetectingAdapter adapter;
 	
 	private CalibrationHelper helper;
-	private CalibrationResultDao dao;
+	private CalibrationResultBeansHelper dao;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -48,7 +48,7 @@ public class APhotoFeatureLocation extends Activity implements Initialization
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.aphotofeaturelocation);
 		Initialization();
-		dao=new CalibrationResultDao(new CalibrationResultBeans());
+		dao=new CalibrationResultBeansHelper(new CalibrationResultBeans());
 	}
 	
 	//检测用事件响应
@@ -77,7 +77,7 @@ public class APhotoFeatureLocation extends Activity implements Initialization
 			dao.setResultdate(SystemUtils.getSystemDateNosecondString());
 			
 			Intent intent=new Intent(APhotoFeatureLocation.this, ACalibrationResultDisplay.class);
-			intent.putExtra(IntentKey.CalibrationResult.toString(), dao.getBeansObj());
+			intent.putExtra(IntentKey.CalibrationResult.toString(), dao.getBeans());
 			startActivity(intent);
 		}
 	};

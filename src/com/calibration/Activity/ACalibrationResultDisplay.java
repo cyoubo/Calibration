@@ -1,21 +1,25 @@
 package com.calibration.Activity;
 
+import java.sql.SQLException;
+
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.calibration.beans.CalibrationResultBeans;
-import com.calibration.dao.CalibrationResultDao;
+import com.calibration.beanshelper.CalibrationResultBeansHelper;
 import com.example.calibration.R;
+import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
 import com.system.Initialization;
 import com.system.IntentKey;
 import com.system.SystemUtils;
-import com.tool.SqliteHelper.SQLiteHelper;
+import com.tool.SqliteHelperOrm.SQLiteOrmHelper;
+import com.tool.SqliteHelperOrm.SQLiteOrmSDContext;
 
 /**
  * 该界面用于标定参数的展示和入库
@@ -29,7 +33,7 @@ public class ACalibrationResultDisplay extends Activity implements
 	private Button btn_save;
 	
 	private CalibrationResultBeans beans;
-	private CalibrationResultDao dao;
+	private CalibrationResultBeansHelper beansHelper;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -40,7 +44,7 @@ public class ACalibrationResultDisplay extends Activity implements
 		Initialization();
 		//获取intent中包含的标定结果
 		beans=(CalibrationResultBeans)getIntent().getExtras().getSerializable(IntentKey.CalibrationResult.toString());
-		dao=new CalibrationResultDao(beans);
+		beansHelper=new CalibrationResultBeansHelper(beans);
 		//展示结果
 		BeansDisplay();
 	}
@@ -56,7 +60,7 @@ public class ACalibrationResultDisplay extends Activity implements
 		tv_k2.setText(""+beans.getK2());
 		tv_p1.setText(""+beans.getP1());
 		tv_p2.setText(""+beans.getP2());
-		et_no.setText(dao.getCalibrationNo());
+		et_no.setText(beansHelper.getCalibrationNo());
 	}
 	
 	//保存事件监听
@@ -67,11 +71,18 @@ public class ACalibrationResultDisplay extends Activity implements
 		public void onClick(View v)
 		{
 			// TODO Auto-generated method stub
-			SQLiteHelper helper=new SQLiteHelper(new SystemUtils().getDataBaseFullPath());
-			helper.OpenDataBase(false);
-			if(helper.Insert(dao)==-1)
-				Toast.makeText(ACalibrationResultDisplay.this, "保存失败", Toast.LENGTH_SHORT).show();
-			
+			try
+			{
+				SQLiteOrmHelper helper=new SQLiteOrmHelper(new SQLiteOrmSDContext(ACalibrationResultDisplay.this), new SystemUtils());
+				helper.getCalibrationDao().createIfNotExists(beans);
+				helper.close();
+			}
+			catch (SQLException e)
+			{
+				// TODO Auto-generated catch block
+				Log.e("demo", "SQLException "+e.getMessage());
+				e.printStackTrace();
+			}
 		}
 	};
 	

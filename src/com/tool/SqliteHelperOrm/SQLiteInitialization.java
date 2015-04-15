@@ -1,14 +1,15 @@
-package com.tool.SqliteHelper;
+package com.tool.SqliteHelperOrm;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import com.tool.SqliteHelperOrm.IDataBaseInfo;
+
 import android.content.Context;
 import android.util.Log;
 
-import com.tool.SqliteHelper.ISQLiteDataInterface.IDataBaseInfo;
 
 /**
  * 数据库的初始化工具类<br>
