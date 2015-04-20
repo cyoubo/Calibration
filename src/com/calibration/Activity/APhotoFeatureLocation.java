@@ -77,7 +77,9 @@ public class APhotoFeatureLocation extends Activity implements Initialization
 			dao.setResultdate(SystemUtils.getSystemDateNosecondString());
 			
 			Intent intent=new Intent(APhotoFeatureLocation.this, ACalibrationResultDisplay.class);
+			//intent中传递标定的参数结果与存储标记
 			intent.putExtra(IntentKey.CalibrationResult.toString(), dao.getBeans());
+			intent.putExtra(IntentKey.IsSave.toString(), true);
 			startActivity(intent);
 		}
 	};

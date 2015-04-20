@@ -1,39 +1,44 @@
 package com.tool.SqliteHelperOrm;
 
-import com.calibration.beans.CalibrationResultBeans;
-import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
-import com.j256.ormlite.dao.Dao;
-import com.j256.ormlite.support.ConnectionSource;
-import com.opecvutils.CalibrationHelper;
-
-import android.R.bool;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.util.Log;
 
+import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
+import com.j256.ormlite.support.ConnectionSource;
+
 public class SQLiteOrmHelper extends OrmLiteSqliteOpenHelper
 {
 
+	/**
+	 * 构造函数<br>
+	 * 用于在指定上下文环境中构建指定名称与版本的数据库
+	 * <br> 可用其他简化版构造函数取代
+	 * */
 	public SQLiteOrmHelper(Context context, String databaseName,
 			CursorFactory factory, int databaseVersion)
 	{
-		super(new SQLiteOrmSDContext(context), databaseName, factory, databaseVersion);
+		super(context, databaseName, factory, databaseVersion);
 		// TODO Auto-generated constructor stub
 	}
-	
+	/**
+	 * 简化版构造函数<br>
+	 * 用于在指定上下文环境中构建指定名称的数据库
+	 * */
 	public SQLiteOrmHelper(Context context, String databaseName)
 	{
-		super(new SQLiteOrmSDContext(context), databaseName, null, 1);
+		super(context, databaseName, null, 1);
 	}
 	
 	/**
-	 * 在IDataBaseInfo对象指定路径中创建或获取SD卡
+	 * 在IDataBaseInfo对象指定路径中创建或获取SD卡(内部)
 	 * */
-	public SQLiteOrmHelper(SQLiteOrmSDContext context,IDataBaseInfo info)
+	public SQLiteOrmHelper(SQLiteOrmSDContext context,String databaseName)
 	{
-		super(context, info.getDataBaseName(), null, 1);
+		super(context, databaseName, null, 1);
 	}
+	
 
 	@Override
 	public void onCreate(SQLiteDatabase arg0, ConnectionSource arg1)
@@ -50,25 +55,15 @@ public class SQLiteOrmHelper extends OrmLiteSqliteOpenHelper
 		Log.d("demo", "onUpgrade");
 	}
 	
+	/**
+	 * 强制打开数据库
+	 * */
 	public boolean OpenDataBase()
 	{
 		return getWritableDatabase()==null;
 	}
 
 	
-	public Dao<CalibrationResultBeans, Integer> getCalibrationDao()
-	{
-		Dao<CalibrationResultBeans, Integer> resultDao=null;
-		try
-		{
-			resultDao=getDao(CalibrationResultBeans.class);
-		}
-		catch (Exception e)
-		{
-			// TODO: handle exception
-			Log.e("demo", "getCalibrationDao"+e.getMessage());
-		}
-		return resultDao;
-	}
+	
 
 }

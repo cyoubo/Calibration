@@ -17,6 +17,7 @@ import com.component.PhotosPickingAdapter;
 import com.example.calibration.R;
 import com.system.GlobleParam;
 import com.system.Initialization;
+import com.system.IntentKey;
 import com.system.SystemUtils;
 import com.tool.mydialog.ListDialog;
 
@@ -30,6 +31,8 @@ public class APhotoPicking extends Activity implements Initialization
 	private TextView tv_sure,tv_cancl;
 	private PhotosPickingAdapter adapter;
 	
+	private boolean flag_IsCalibration;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -37,8 +40,9 @@ public class APhotoPicking extends Activity implements Initialization
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.aphotopicking);
 		Initialization();
+		flag_IsCalibration=getIntent().getExtras().getBoolean(IntentKey.IsCalibration.toString());
 		String[] imagepaths=DirectoryUtils.GetSubFiles(SystemUtils.getPictureThumbnailPath(), new JPGEFillter(), true);
-		adapter=new PhotosPickingAdapter(this,imagepaths);
+		adapter=new PhotosPickingAdapter(this,imagepaths,!flag_IsCalibration);
 		gridView.setAdapter(adapter);
 		gridView.setOnItemClickListener(itemClickListener);
 		
@@ -64,8 +68,10 @@ public class APhotoPicking extends Activity implements Initialization
 		{
 			if(v.getId()==R.id.aphotopicking_sure)
 			{
-				
-				GlobleParam.Create().setThumbnailImagePath(adapter.getPickedImagePath());
+				if(flag_IsCalibration)
+					GlobleParam.Create().setThumbnailImagePath(adapter.getPickedImagePath());
+				else 
+					GlobleParam.Create().setRemapImagePath(adapter.getPickedImagePath()[0]);
 				ListDialog dialog=new ListDialog(APhotoPicking.this, "Ìôßx½Y¹û");
 				dialog.SetList(DirectoryUtils.SpiltFullPathToNames(adapter.getPickedImagePath()), null);
 				dialog.SetPlistener("È¡Ïû", null);
@@ -75,13 +81,13 @@ public class APhotoPicking extends Activity implements Initialization
 					@Override
 					public void onClick(DialogInterface dialog, int which)
 					{
-						startActivity(new Intent(APhotoPicking.this, APhotoFeatureDetect.class));
+						if(flag_IsCalibration)
+							startActivity(new Intent(APhotoPicking.this, APhotoFeatureDetect.class));
+						else 
+							startActivity(new Intent(APhotoPicking.this, APhotoRemap.class));
 					}
 				});
-				
 				dialog.Create().show();
-				
-				
 			}
 			else
 			{

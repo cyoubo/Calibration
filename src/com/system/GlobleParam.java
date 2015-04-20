@@ -39,4 +39,15 @@ public class GlobleParam
 	{
 		this.thumbnailImagePath = thumbnailImagePath;
 	}
+	
+	private String remapImagePath;
+
+	public String getRemapImagePath()
+	{
+		return remapImagePath;
+	}
+	public void setRemapImagePath(String remapImagePath)
+	{
+		this.remapImagePath = remapImagePath;
+	}
 }

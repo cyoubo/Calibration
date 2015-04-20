@@ -17,14 +17,19 @@ import android.util.Log;
 public class SQLiteOrmSDContext extends ContextWrapper
 {
 
+	private IDataBaseInfo info;
 	/**
 	 * 构造函数<br>
 	 * @param base 创建当前对象的Activity的Context
+	 * @param info 包含自定义数据库信息的接口对象
 	 * */
-	public SQLiteOrmSDContext(Context base)
+	public SQLiteOrmSDContext(Context base,IDataBaseInfo info)
 	{
 		super(base);
+		this.info=info;
 	}
+	
+	
 	
 	//2.3版本以下使用
 	@Override
@@ -52,7 +57,7 @@ public class SQLiteOrmSDContext extends ContextWrapper
 	public File getDatabasePath(String name)
 	{
 		Log.d("demo","into getDatabasePath");
-		File path=new File(new SystemUtils().getDataBasePath());
+		File path=new File(info.getDataBasePath());
 		Log.d("demo","path.exists() "+path.exists());
 		if(!path.exists())
 		{
@@ -60,18 +65,23 @@ public class SQLiteOrmSDContext extends ContextWrapper
 			Log.d("demo","into mkdirs "+r);
 		}
 		
-		File dbfile=new File(new SystemUtils().getDataBaseFullPath());
+		File dbfile=new File(info.getDataBaseFullPath());
 		Log.d("demo","dbfile.exists() "+dbfile.exists());
 		if(!dbfile.exists())
 		{
 			Log.d("demo","into mkdirs dbfile");
 			//如果文件不存在，则从asset文件中拷贝
-			SQLiteInitialization initialization=new SQLiteInitialization(new SystemUtils(), this);
+			SQLiteInitialization initialization=new SQLiteInitialization(info, this);
 			boolean r=initialization.TransportDataBase(name);
 			Log.d("demo","into TransportDataBase "+r);
 		}
 		
-		return new File(new SystemUtils().getDataBaseFullPath()); 
+		return new File(info.getDataBaseFullPath()); 
+	}
+	
+	public IDataBaseInfo getInfo()
+	{
+		return info;
 	}
 
 }

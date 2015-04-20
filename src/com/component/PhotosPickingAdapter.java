@@ -21,34 +21,62 @@ import com.tool.BitmapHelper;
  * **/
 public class PhotosPickingAdapter extends PhotoThumbAdapter
 {
-	private boolean[] mIsPicked;
-
-	public  PhotosPickingAdapter(Context context,String[] imagePaths)
+	/**标示符，标记是否已经被挑选*/
+	private boolean[] isPicked;
+	/**标示符，当前是否为单选模式*/
+	private boolean isSingle;
+	/**构造函数<br>
+	 * 构造图片挑选的adapter
+	 * @param context 上下文环境
+	 * @param imagePaths 图像的路径
+	 * @param isSingle 是否为单选模式
+	 * */
+	public  PhotosPickingAdapter(Context context,String[] imagePaths,boolean isSingle)
 	{
 		super(imagePaths, DirectoryUtils.SpiltFullPathToNames(imagePaths.clone()), context);
 		windowssize = SystemUtils.getWindowSize(context);
-		mIsPicked=new boolean[super.imageNames.length];
+		isPicked=new boolean[super.imageNames.length];
+		this.isSingle=isSingle;
 	}
 	
+	/**
+	 * 修改指定为location的图片的挑选状态<br>
+	 * 单选模式下，选中状态唯一存在<br>
+	 * 多选模式下，选中状态与未选中状态相互转换
+	 * */
 	public void UpdatePicked(int location)
 	{
-		this.mIsPicked[location]=(!this.mIsPicked[location]);
+		if(isSingle)
+		{
+			ResetPicked();
+			this.isPicked[location]=true;
+		}
+		else
+		{
+			this.isPicked[location]=(!this.isPicked[location]);
+		}
 		this.notifyDataSetChanged();
 	}
 	
+	/**
+	 * 重设选择状态，全置于未挑选状态
+	 * */
 	public void ResetPicked()
 	{
-		for(int i=0;i<mIsPicked.length;i++)
-			mIsPicked[i]=false;
+		for(int i=0;i<isPicked.length;i++)
+			isPicked[i]=false;
 		this.notifyDataSetChanged();
 	}
 	
+	/**
+	 * 获取已经挑选的影像路径
+	 * */
 	public String[] getPickedImagePath()
 	{
 		List<String> result=new ArrayList<>();
 		for(int i=0;i<super.ImageThumbPath.length;i++)
 		{
-			if(mIsPicked[i])
+			if(isPicked[i])
 				result.add(ImageThumbPath[i]);
 		}
 		String[] temp = new String[result.size()];
@@ -69,7 +97,7 @@ public class PhotosPickingAdapter extends PhotoThumbAdapter
 			ImageView ig_image = (ImageView) convertView
 					.findViewById(R.id.tool_photothumbnailitem_imageView);
 			tv_name.setText(this.imageNames[position]);
-			if(mIsPicked[position])
+			if(isPicked[position])
 				tv_name.setTextColor(Color.RED);
 			BitmapHelper helper = new BitmapHelper(ImageThumbPath[position]);
 			ig_image.setImageBitmap(ModifyBitmapSize(helper.getBitmap()));

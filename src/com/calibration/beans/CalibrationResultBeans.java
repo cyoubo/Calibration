@@ -36,6 +36,7 @@ public class CalibrationResultBeans implements Serializable
 
 	@DatabaseField(columnName="p2")
 	private double p2;
+	
 
 	@DatabaseField(columnName="resolution")
 	private String resolution;

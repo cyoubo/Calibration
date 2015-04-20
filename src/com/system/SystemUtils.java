@@ -56,6 +56,12 @@ public class SystemUtils implements IDataBaseInfo
 	{
 		return ExtendSDpath()+"/PHM/Photo";
 	}
+	
+	/** 获取用于存储重采样图像的地址字符串*/
+	public static String getPictureRemapPath()
+	{
+		return ExtendSDpath()+"/PHM/Photo/Remap";
+	}
 
 	/** 获取用于存储图像缩率图的地址字符串 */
 	public static String getPictureThumbnailPath()

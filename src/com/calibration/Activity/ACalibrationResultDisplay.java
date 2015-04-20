@@ -13,12 +13,11 @@ import android.widget.TextView;
 
 import com.calibration.beans.CalibrationResultBeans;
 import com.calibration.beanshelper.CalibrationResultBeansHelper;
+import com.component.SQLiteOrmHelperPHM;
 import com.example.calibration.R;
-import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
 import com.system.Initialization;
 import com.system.IntentKey;
 import com.system.SystemUtils;
-import com.tool.SqliteHelperOrm.SQLiteOrmHelper;
 import com.tool.SqliteHelperOrm.SQLiteOrmSDContext;
 
 /**
@@ -35,6 +34,7 @@ public class ACalibrationResultDisplay extends Activity implements
 	private CalibrationResultBeans beans;
 	private CalibrationResultBeansHelper beansHelper;
 	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -46,10 +46,10 @@ public class ACalibrationResultDisplay extends Activity implements
 		beans=(CalibrationResultBeans)getIntent().getExtras().getSerializable(IntentKey.CalibrationResult.toString());
 		beansHelper=new CalibrationResultBeansHelper(beans);
 		//展示结果
-		BeansDisplay();
+		BeansDisplay(getIntent().getExtras().containsKey(IntentKey.IsSave.toString()));
 	}
 	
-	private void BeansDisplay()
+	private void BeansDisplay(boolean flag_save)
 	{
 		tv_fx.setText(""+beans.getFx());
 		tv_fy.setText(""+beans.getFy());
@@ -61,6 +61,11 @@ public class ACalibrationResultDisplay extends Activity implements
 		tv_p1.setText(""+beans.getP1());
 		tv_p2.setText(""+beans.getP2());
 		et_no.setText(beansHelper.getCalibrationNo());
+		
+		//展示模式下，按钮不可见
+		if(!flag_save)
+			this.btn_save.setVisibility(View.INVISIBLE);
+
 	}
 	
 	//保存事件监听
@@ -73,7 +78,8 @@ public class ACalibrationResultDisplay extends Activity implements
 			// TODO Auto-generated method stub
 			try
 			{
-				SQLiteOrmHelper helper=new SQLiteOrmHelper(new SQLiteOrmSDContext(ACalibrationResultDisplay.this), new SystemUtils());
+				SQLiteOrmSDContext sdContext=new SQLiteOrmSDContext(ACalibrationResultDisplay.this, new SystemUtils());
+				SQLiteOrmHelperPHM helper=new SQLiteOrmHelperPHM(sdContext);
 				helper.getCalibrationDao().createIfNotExists(beans);
 				helper.close();
 			}

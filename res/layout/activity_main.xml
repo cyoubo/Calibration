@@ -10,31 +10,43 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#76EE00"
+        android:gravity="center"
         android:padding="15px"
         android:text="拍摄影像"
-        android:gravity="center"
-        android:textColor="#FFFFFF"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-     <TextView
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FFFFFF" />
+
+    <TextView
         android:id="@+id/activity_main_tv_calibration"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#CD853F"
+        android:gravity="center"
         android:padding="15px"
         android:text="标定解算"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/activity_main_tv_remap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FF7F24"
         android:gravity="center"
-        android:textColor="#FFFFFF"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-      <TextView
+        android:padding="15px"
+        android:text="图像重采样"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FFFFFF" />
+
+    <TextView
         android:id="@+id/activity_main_tv_scan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#1E90FF"
+        android:gravity="center"
         android:padding="15px"
         android:text="结果查看"
-        android:gravity="center"
-        android:textColor="#FFFFFF"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-     
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FFFFFF" />
 
 </LinearLayout>
