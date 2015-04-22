@@ -159,4 +159,14 @@ public class CalibrationResultBeans implements Serializable
 	{
 		this.rms = rms;
 	}
+	
+	@Override
+	public String toString()
+	{
+		StringBuffer buffer=new StringBuffer();
+		buffer.append("index  "+this.index);
+		buffer.append("\tResolution  "+this.resolution);
+		buffer.append("\tfx  "+this.fx);
+		return buffer.toString();
+	}
 }

@@ -246,7 +246,8 @@ public class BitmapHelper
 	}
 	/**
 	 * 返回当前图像的存储路径
-	 * @return 前图像的存储路径
+	 * @return 前图像的存储路径<br>
+	 * 该方法需要在Savexxx方法后调用后使用
 	 * */ 
 	public String getImagePath()
 	{
@@ -254,10 +255,23 @@ public class BitmapHelper
 	}
 	/**
 	 * 返回当前图像的缩略图的存储路径
-	 * @return 前图像的缩略图存储路径
+	 * @return 前图像的缩略图存储路径<br>
+	 * 该方法需要在Savexxx方法后调用后使用
 	 * */ 
 	public String getImageThumbnailPath()
 	{
 		return imageThumbnailPath;
+	}
+	
+	/**
+	 * 返回当前图像的宽度与高度的像素值
+	 * @return 宽度与高度像素值组成的数组
+	 * */ 
+	public int[] getImageSize()
+	{
+		int[] result=new int[2];
+		result[0]=bitmap.getWidth();
+		result[1]=bitmap.getHeight();
+		return result;
 	}
 }

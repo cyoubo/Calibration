@@ -60,11 +60,14 @@ public class ACalibrationResultDisplay extends Activity implements
 		tv_k2.setText(""+beans.getK2());
 		tv_p1.setText(""+beans.getP1());
 		tv_p2.setText(""+beans.getP2());
-		et_no.setText(beansHelper.getCalibrationNo());
+		et_no.setText(beansHelper.getCalibrationShortName());
 		
-		//展示模式下，按钮不可见
+		//展示模式下，按钮不可见,名稱不可編輯
 		if(!flag_save)
+		{
 			this.btn_save.setVisibility(View.INVISIBLE);
+			this.et_no.setEnabled(false);
+		}
 
 	}
 	

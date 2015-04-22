@@ -56,12 +56,12 @@ containing a value of this type.
         public static final int right=0x7f020005;
     }
     public static final class id {
-        public static final int MainActivity_btn_take=0x7f040034;
-        public static final int MainActivity_frameLayout=0x7f040030;
-        public static final int MainActivity_ibt_more=0x7f040035;
-        public static final int MainActivity_ibt_scan=0x7f040033;
-        public static final int MainActivity_surfaceView=0x7f040031;
-        public static final int MainActivity_tv_attitudeinfo=0x7f040032;
+        public static final int MainActivity_btn_take=0x7f040035;
+        public static final int MainActivity_frameLayout=0x7f040031;
+        public static final int MainActivity_ibt_more=0x7f040036;
+        public static final int MainActivity_ibt_scan=0x7f040034;
+        public static final int MainActivity_surfaceView=0x7f040032;
+        public static final int MainActivity_tv_attitudeinfo=0x7f040033;
         public static final int acalibrationresultdisplay_cx=0x7f040006;
         public static final int acalibrationresultdisplay_cy=0x7f040007;
         public static final int acalibrationresultdisplay_fx=0x7f040004;
@@ -73,7 +73,7 @@ containing a value of this type.
         public static final int acalibrationresultdisplay_p2=0x7f04000c;
         public static final int acalibrationresultdisplay_rms=0x7f040008;
         public static final int acalibrationresultdisplay_save=0x7f04000d;
-        public static final int action_settings=0x7f04003f;
+        public static final int action_settings=0x7f040041;
         public static final int activity_main_tv_calibration=0x7f04000f;
         public static final int activity_main_tv_remap=0x7f040010;
         public static final int activity_main_tv_scan=0x7f040011;
@@ -95,31 +95,33 @@ containing a value of this type.
         public static final int aphotopicking_gridview=0x7f040021;
         public static final int aphotopicking_sure=0x7f040020;
         public static final int aphotoremap_ig_paramIndex=0x7f040025;
+        public static final int aphotoremap_ig_remapimage=0x7f040029;
         public static final int aphotoremap_progressBar=0x7f040028;
-        public static final int aphotoremap_sure=0x7f040029;
+        public static final int aphotoremap_sure=0x7f04002a;
         public static final int aphotoremap_tv_outpath=0x7f040026;
         public static final int aphotoremap_tv_paramIndex=0x7f040024;
         public static final int aphotoremap_tv_progress=0x7f040027;
         public static final int aphotoremap_tv_remappath=0x7f040022;
         public static final int aphotoremap_tv_resolution=0x7f040023;
-        public static final int aphotoscan_gridview=0x7f04002a;
-        public static final int aphotoscaninfo_imageView=0x7f04002d;
-        public static final int aphotoscaninfo_tv_name=0x7f04002b;
-        public static final int aphotoscaninfo_tv_resolution=0x7f04002c;
-        public static final int aphotoscanitem_imageView=0x7f04002e;
-        public static final int aphotoscanitem_textView=0x7f04002f;
-        public static final int awaitloading_tv_info=0x7f040036;
+        public static final int aphotoscan_gridview=0x7f04002b;
+        public static final int aphotoscaninfo_imageView=0x7f04002e;
+        public static final int aphotoscaninfo_tv_name=0x7f04002c;
+        public static final int aphotoscaninfo_tv_resolution=0x7f04002d;
+        public static final int aphotoscanitem_imageView=0x7f04002f;
+        public static final int aphotoscanitem_textView=0x7f040030;
+        public static final int awaitloading_tv_info=0x7f040037;
         public static final int back=0x7f040001;
-        public static final int calibrationresultitem_tv_resolution=0x7f040037;
-        public static final int calibrationresultitem_tv_rms=0x7f040038;
-        public static final int featuredetectingdapteritem_imageView=0x7f04003b;
-        public static final int featuredetectingdapteritem_progressBar=0x7f04003a;
-        public static final int featuredetectingdapteritem_title=0x7f040039;
+        public static final int calibrationresultitem_tv_index=0x7f040038;
+        public static final int calibrationresultitem_tv_resolution=0x7f040039;
+        public static final int calibrationresultitem_tv_rms=0x7f04003a;
+        public static final int featuredetectingdapteritem_imageView=0x7f04003d;
+        public static final int featuredetectingdapteritem_progressBar=0x7f04003c;
+        public static final int featuredetectingdapteritem_title=0x7f04003b;
         public static final int front=0x7f040002;
-        public static final int sizeadapteritem_tv=0x7f04003c;
+        public static final int sizeadapteritem_tv=0x7f04003e;
         public static final int textView1=0x7f040012;
-        public static final int tool_photothumbnailitem_imageView=0x7f04003d;
-        public static final int tool_photothumbnailitem_textView=0x7f04003e;
+        public static final int tool_photothumbnailitem_imageView=0x7f04003f;
+        public static final int tool_photothumbnailitem_textView=0x7f040040;
     }
     public static final class layout {
         public static final int acalibrationresultdisplay=0x7f030000;

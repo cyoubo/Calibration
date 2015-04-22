@@ -62,12 +62,20 @@ public class SystemUtils implements IDataBaseInfo
 	{
 		return ExtendSDpath()+"/PHM/Photo/Remap";
 	}
+	
+	/** 获取用于存储重采样缩略图图像的地址字符串*/
+	public static String getPictureRemapThumbnailPath()
+	{
+		return ExtendSDpath()+"/PHM/Photo/Remap/thumbnail";
+	}
 
 	/** 获取用于存储图像缩率图的地址字符串 */
 	public static String getPictureThumbnailPath()
 	{
 		return ExtendSDpath()+"/PHM/Photo/thumbnail";
 	}
+	
+	
 	/**用于获取屏幕的尺寸
 	 * @return int[] int[0]为屏幕宽度，1为高度 
 	 * */

@@ -35,20 +35,22 @@ public class APhotoScan extends Activity
 	{
 		// 绑定控件
 		grid = (GridView) findViewById(R.id.aphotoscan_gridview);
-		// 初始化adapter
+		// 初始化adapter,獲取重採樣圖像縮略圖路徑
 		String[] paths = DirectoryUtils.GetSubFiles(
-				SystemUtils.getPictureThumbnailPath(), new JPGEFillter(), true);
+				SystemUtils.getPictureRemapThumbnailPath(), new JPGEFillter(), true);
 
-		String[] names = new String[paths.length];
-		for (int i = 0; i < names.length; i++)
+		if(paths!=null)
 		{
-			names[i] = DirectoryUtils.SpiltFullPath(paths[i])[1];
+			String[] names = new String[paths.length];
+			for (int i = 0; i < names.length; i++)
+			{
+				names[i] = DirectoryUtils.SpiltFullPath(paths[i])[1];
+			}
+			adapter = new PhotoThumbAdapter(paths, names, this);
+
+			grid.setAdapter(adapter);
+			grid.setOnItemClickListener(griditemClickListener);
 		}
-		adapter = new PhotoThumbAdapter(paths, names, this);
-
-		grid.setAdapter(adapter);
-		grid.setOnItemClickListener(griditemClickListener);
-
 	}
 
 	private OnItemClickListener griditemClickListener = new OnItemClickListener()

@@ -50,4 +50,5 @@ public class GlobleParam
 	{
 		this.remapImagePath = remapImagePath;
 	}
+	
 }

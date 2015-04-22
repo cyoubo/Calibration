@@ -10,9 +10,6 @@ import android.widget.TextView;
 import com.example.calibration.R;
 import com.system.Initialization;
 import com.system.IntentKey;
-import com.system.SystemUtils;
-import com.tool.SqliteHelperOrm.SQLiteOrmHelper;
-import com.tool.SqliteHelperOrm.SQLiteOrmSDContext;
 
 public class MainActivity extends Activity implements Initialization
 {
@@ -58,7 +55,7 @@ public class MainActivity extends Activity implements Initialization
 				}break;
 				case R.id.activity_main_tv_scan:
 				{
-					
+					intent.setClass(MainActivity.this, APhotoScan.class);
 				}break;
 				case R.id.activity_main_tv_takingphoto:
 				{
@@ -72,7 +69,7 @@ public class MainActivity extends Activity implements Initialization
 					intent.setClass(MainActivity.this, APhotoPicking.class);
 				}break;
 				default:
-					break;
+					break; 
 			}
 			startActivity(intent);
 		}

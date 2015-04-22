@@ -39,6 +39,7 @@
         <activity android:name="com.calibration.Activity.APhotoFeatureLocation" android:theme="@android:style/Theme.Light.NoTitleBar"></activity>
         <activity android:name="com.calibration.Activity.ACalibrationResultDisplay" android:theme="@android:style/Theme.Light.NoTitleBar"></activity>
         <activity android:name="com.calibration.Activity.APhotoRemap"></activity>
+        <activity android:name="com.calibration.Activity.ACalibrationListDisplay"></activity>
     </application>
 
 </manifest>

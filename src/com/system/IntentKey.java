@@ -2,5 +2,11 @@ package com.system;
 
 public enum IntentKey 
 {
-	IsLeftImage,PhotoParam, PhotoThumbnailPath,IsSave,DrawHarris,CalibrationResult,IsCalibration;
+	IsLeftImage,
+	PhotoParam, 
+	PhotoThumbnailPath,
+	IsSave,
+	DrawHarris,
+	CalibrationResult,
+	IsCalibration;
 }

@@ -54,7 +54,7 @@
         <TextView
             android:id="@+id/aphotoremap_tv_paramIndex"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -90,7 +90,7 @@
         <TextView
             android:id="@+id/aphotoremap_tv_progress"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:text="待处理"
@@ -101,6 +101,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/aphotoremap_ig_remapimage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_launcher" />
 
     <Button
         android:id="@+id/aphotoremap_sure"
