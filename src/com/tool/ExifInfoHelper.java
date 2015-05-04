@@ -2,7 +2,6 @@ package com.tool;
 
 import java.io.IOException;
 
-import android.R.string;
 import android.media.ExifInterface;
 
 public class ExifInfoHelper

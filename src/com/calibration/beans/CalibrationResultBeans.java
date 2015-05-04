@@ -5,6 +5,9 @@ import java.io.Serializable;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+/**
+ *  标定结果Beans，采用Ormlite框架
+ **/
 @DatabaseTable(tableName="CalibrationResult")
 public class CalibrationResultBeans implements Serializable
 {
@@ -160,6 +163,9 @@ public class CalibrationResultBeans implements Serializable
 		this.rms = rms;
 	}
 	
+	/**
+	 * 测试用头string方法
+	 * */
 	@Override
 	public String toString()
 	{

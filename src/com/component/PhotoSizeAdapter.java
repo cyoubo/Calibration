@@ -16,9 +16,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 /**
- * @author Administrator
- *         <p>
- *         用于完成手机相机支持的分辨率的Adapter
+ *用于完成手机相机支持的分辨率的Adapter
  */
 public class PhotoSizeAdapter extends BaseAdapter
 {

@@ -5,4 +5,8 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="loading">载入中请稍后</string>
+    <string-array name="resultpannellabel">
+        <item>标定参数</item>
+        <item>重采样影像</item>
+    </string-array>
 </resources>

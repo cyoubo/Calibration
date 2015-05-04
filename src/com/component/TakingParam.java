@@ -6,15 +6,10 @@ package com.component;
 import java.io.Serializable;
 import java.util.List;
 
-
-
-
 import android.hardware.Camera.Size;
 
 /**
- * @author Administrator
- *         <p>
- *         拍照参数的模型类
+ *拍照参数的模型类
  */
 public class TakingParam implements Serializable
 {

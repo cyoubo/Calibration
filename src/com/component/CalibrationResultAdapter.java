@@ -68,9 +68,11 @@ public class CalibrationResultAdapter extends BaseAdapter
 			TextView tv_rms=(TextView)convertView.findViewById(R.id.calibrationresultitem_tv_rms);
 			TextView tv_index=(TextView)convertView.findViewById(R.id.calibrationresultitem_tv_index);
 	
-			tv_resolution.setText(list.get(position).getResolution());
-			tv_rms.setText(""+list.get(position).getRms());
-			tv_index.setText(""+list.get(position).getIndex());
+			CalibrationResultBeans temp=list.get(position);
+			
+			tv_resolution.setText(temp.getResolution());
+			tv_rms.setText(""+temp.getRms());
+			tv_index.setText(""+temp.getIndex());
 		}
 
 		return convertView;

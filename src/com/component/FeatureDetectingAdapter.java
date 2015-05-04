@@ -3,7 +3,6 @@ package com.component;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.R.integer;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -131,7 +130,4 @@ public class FeatureDetectingAdapter extends BaseAdapter
 		result.toArray(temp);
 		return temp;
 	}
-	
-	
-
 }

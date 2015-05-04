@@ -8,6 +8,9 @@
 package com.example.calibration;
 
 public final class R {
+    public static final class array {
+        public static final int resultpannellabel=0x7f070000;
+    }
     public static final class attr {
         /** <p>May be an integer value, such as "<code>100</code>".
 <p>This may also be a reference to a resource (in the form
@@ -53,7 +56,9 @@ containing a value of this type.
         public static final int ic_photeinfo=0x7f020002;
         public static final int ic_photodefault=0x7f020003;
         public static final int ic_plus=0x7f020004;
-        public static final int right=0x7f020005;
+        public static final int param=0x7f020005;
+        public static final int remap=0x7f020006;
+        public static final int right=0x7f020007;
     }
     public static final class id {
         public static final int MainActivity_btn_take=0x7f040035;
@@ -73,7 +78,7 @@ containing a value of this type.
         public static final int acalibrationresultdisplay_p2=0x7f04000c;
         public static final int acalibrationresultdisplay_rms=0x7f040008;
         public static final int acalibrationresultdisplay_save=0x7f04000d;
-        public static final int action_settings=0x7f040041;
+        public static final int action_settings=0x7f040044;
         public static final int activity_main_tv_calibration=0x7f04000f;
         public static final int activity_main_tv_remap=0x7f040010;
         public static final int activity_main_tv_scan=0x7f040011;
@@ -109,19 +114,22 @@ containing a value of this type.
         public static final int aphotoscaninfo_tv_resolution=0x7f04002d;
         public static final int aphotoscanitem_imageView=0x7f04002f;
         public static final int aphotoscanitem_textView=0x7f040030;
-        public static final int awaitloading_tv_info=0x7f040037;
+        public static final int aresultpannel_gridView=0x7f040037;
+        public static final int awaitloading_tv_info=0x7f040038;
         public static final int back=0x7f040001;
-        public static final int calibrationresultitem_tv_index=0x7f040038;
-        public static final int calibrationresultitem_tv_resolution=0x7f040039;
-        public static final int calibrationresultitem_tv_rms=0x7f04003a;
-        public static final int featuredetectingdapteritem_imageView=0x7f04003d;
-        public static final int featuredetectingdapteritem_progressBar=0x7f04003c;
-        public static final int featuredetectingdapteritem_title=0x7f04003b;
+        public static final int calibrationresultitem_tv_index=0x7f040039;
+        public static final int calibrationresultitem_tv_resolution=0x7f04003a;
+        public static final int calibrationresultitem_tv_rms=0x7f04003b;
+        public static final int featuredetectingdapteritem_imageView=0x7f04003e;
+        public static final int featuredetectingdapteritem_progressBar=0x7f04003d;
+        public static final int featuredetectingdapteritem_title=0x7f04003c;
         public static final int front=0x7f040002;
-        public static final int sizeadapteritem_tv=0x7f04003e;
+        public static final int sizeadapteritem_tv=0x7f04003f;
         public static final int textView1=0x7f040012;
-        public static final int tool_photothumbnailitem_imageView=0x7f04003f;
-        public static final int tool_photothumbnailitem_textView=0x7f040040;
+        public static final int tool_pannelitem_icon=0x7f040040;
+        public static final int tool_pannelitem_label=0x7f040041;
+        public static final int tool_photothumbnailitem_imageView=0x7f040042;
+        public static final int tool_photothumbnailitem_textView=0x7f040043;
     }
     public static final class layout {
         public static final int acalibrationresultdisplay=0x7f030000;
@@ -135,14 +143,16 @@ containing a value of this type.
         public static final int aphotoscandisplay=0x7f030008;
         public static final int aphotoscanitem=0x7f030009;
         public static final int aphototaking=0x7f03000a;
-        public static final int awaitloading=0x7f03000b;
-        public static final int calibrationresultitem=0x7f03000c;
-        public static final int featuredetectingadapteritem=0x7f03000d;
-        public static final int sizeadapteritem=0x7f03000e;
-        public static final int tool_photothumbnailitem=0x7f03000f;
+        public static final int aresultpannel=0x7f03000b;
+        public static final int awaitloading=0x7f03000c;
+        public static final int calibrationresultitem=0x7f03000d;
+        public static final int featuredetectingadapteritem=0x7f03000e;
+        public static final int sizeadapteritem=0x7f03000f;
+        public static final int tool_pannelitem=0x7f030010;
+        public static final int tool_photothumbnailitem=0x7f030011;
     }
     public static final class menu {
-        public static final int main=0x7f080000;
+        public static final int main=0x7f090000;
     }
     public static final class string {
         public static final int action_settings=0x7f060002;
@@ -172,11 +182,11 @@ containing a value of this type.
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f070000;
+        public static final int AppBaseTheme=0x7f080000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f070001;
+        public static final int AppTheme=0x7f080001;
     }
     public static final class styleable {
         /** Attributes that can be used with a CameraBridgeViewBase.

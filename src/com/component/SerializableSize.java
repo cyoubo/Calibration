@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 
 import android.hardware.Camera.Size;
-import android.util.Log;
 
 /**
  * 自定义的可序列化的Size对象

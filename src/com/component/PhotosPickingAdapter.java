@@ -87,21 +87,18 @@ public class PhotosPickingAdapter extends PhotoThumbAdapter
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent)
 	{
-		// TODO Auto-generated method stub
-		//if (convertView == null)
-		{
-			LayoutInflater inflater = LayoutInflater.from(context);
-			convertView = inflater.inflate(R.layout.tool_photothumbnailitem, null);
-			TextView tv_name = (TextView) convertView
+		LayoutInflater inflater = LayoutInflater.from(context);
+		convertView = inflater.inflate(R.layout.tool_photothumbnailitem, null);
+		TextView tv_name = (TextView) convertView
 					.findViewById(R.id.tool_photothumbnailitem_textView);
-			ImageView ig_image = (ImageView) convertView
+		ImageView ig_image = (ImageView) convertView
 					.findViewById(R.id.tool_photothumbnailitem_imageView);
-			tv_name.setText(this.imageNames[position]);
-			if(isPicked[position])
-				tv_name.setTextColor(Color.RED);
-			BitmapHelper helper = new BitmapHelper(ImageThumbPath[position]);
-			ig_image.setImageBitmap(ModifyBitmapSize(helper.getBitmap()));
-		}
+		tv_name.setText(this.imageNames[position]);
+		//若为挑选状态，则将标题栏文字改为红色
+		if(isPicked[position])
+			tv_name.setTextColor(Color.RED);
+		BitmapHelper helper = new BitmapHelper(ImageThumbPath[position]);
+		ig_image.setImageBitmap(ModifyBitmapSize(helper.getBitmap()));
 		return convertView;
 	}
 }

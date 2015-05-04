@@ -1,6 +1,5 @@
 package com.component;
 
-import android.content.Context;
 import android.util.Log;
 
 import com.calibration.beans.CalibrationResultBeans;
@@ -9,6 +8,9 @@ import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.tool.SqliteHelperOrm.SQLiteOrmHelper;
 import com.tool.SqliteHelperOrm.SQLiteOrmSDContext;
 
+/**
+ * 适用于PHM项目的Ormlite框架下的dbhelper
+ * */
 public class SQLiteOrmHelperPHM extends SQLiteOrmHelper
 {
 	public SQLiteOrmHelperPHM(SQLiteOrmSDContext context)

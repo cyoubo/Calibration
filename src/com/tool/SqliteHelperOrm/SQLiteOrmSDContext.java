@@ -2,8 +2,6 @@ package com.tool.SqliteHelperOrm;
 
 import java.io.File;
 
-import com.system.SystemUtils;
-
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.database.DatabaseErrorHandler;
